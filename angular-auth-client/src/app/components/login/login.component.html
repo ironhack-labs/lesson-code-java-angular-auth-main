@@ -1,0 +1,42 @@
+<div class="container">
+    <form (ngSubmit)="login()" [formGroup]="loginForm" (change)="clearErrorMsg()">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>Login</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="login-container"> 
+                    <div class="login-fields">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input type="text" matInput formControlName="email" placeholder="Email...">
+                            <mat-error *ngIf="emailInput.hasError('required') && emailInput.touched">
+                                Email is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="emailInput.hasError('email') && emailInput.touched">
+                                Email <strong>invalid</strong>
+                            </mat-error>
+                          </mat-form-field>
+                          <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput formControlName="password" placeholder="Passworrd...">
+                            <mat-error *ngIf="passwordInput.hasError('required') && passwordInput.touched">
+                              Password is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-error *ngIf="loginForm.valid && externalErrorMsg !== ''">
+                            Wrong email/password
+                        </mat-error>
+                          <button type="submit" mat-raised-button color="accent" class="full-width" [disabled]="loginForm.invalid">LOGIN</button>
+                    </div>
+                    <div class="login-img">
+                        <img src="./assets/login.png" alt="">
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <h4 class="register-text">Don't have an account? <a [routerLink]="['/register']">Create new account</a></h4>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

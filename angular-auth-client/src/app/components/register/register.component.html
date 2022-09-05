@@ -1,0 +1,50 @@
+<div class="container">
+    <form (ngSubmit)="register()" [formGroup]="registerForm">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>SignUp</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="login-container">
+                    <div class="login-fields">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Name</mat-label>
+                            <input type="text" matInput formControlName="name" placeholder="Name...">
+                            <mat-error *ngIf="nameInput.hasError('required') && nameInput.touched">
+                              Name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input type="text" matInput formControlName="email" placeholder="Email...">
+                            <mat-error *ngIf="emailInput.hasError('required') && emailInput.touched">
+                              Email is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput formControlName="password" placeholder="Passworrd...">
+                            <mat-error *ngIf="passwordInput.hasError('required') && passwordInput.touched">
+                              Password is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Password Confirmation</mat-label>
+                            <input type="password" matInput formControlName="passwordConfirmation" placeholder="Passworrd Confirmation...">
+                            <mat-error *ngIf="registerForm.hasError('passwordMatch') && passwordInput.valid && passwordConfirmationInput.touched">
+                                Passwords do not match
+                            </mat-error>
+                        </mat-form-field>
+                        <button type="submit" mat-raised-button color="accent" class="full-width" [disabled]="registerForm.invalid">SIGNUP</button>
+                    </div>
+                    <div class="login-img">
+                        <img src="./assets/login.png" alt="">
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <h4 class="register-text">Already have an account? <a [routerLink]="['/login']">Login</a></h4>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
