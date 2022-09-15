@@ -30,7 +30,7 @@
                         </mat-form-field>
                         <mat-form-field class="full-width" appearance="fill">
                             <mat-label>Password Confirmation</mat-label>
-                            <input type="password" matInput formControlName="passwordConfirmation" placeholder="Passworrd Confirmation...">
+                            <input type="password" matInput formControlName="passwordConfirmation" placeholder="Password Confirmation...">
                             <mat-error *ngIf="registerForm.hasError('passwordMatch') && passwordInput.valid && passwordConfirmationInput.touched">
                                 Passwords do not match
                             </mat-error>

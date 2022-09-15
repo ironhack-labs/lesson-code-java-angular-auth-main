@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/services/auth.service';
 import { CustomValidators } from 'src/app/utils/custom.validations';
 
 @Component({
@@ -19,7 +17,6 @@ export class RegisterComponent implements OnInit {
   passwordConfirmationInput: FormControl;
 
   constructor(
-    private authService: AuthService,
     private router: Router
   ) {
     this.nameInput = new FormControl('', [Validators.required]);
@@ -38,20 +35,6 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.authService.register(this.registerForm.value.name, this.registerForm.value.email, this.registerForm.value.password).subscribe(
-      (user: User) => {
-        alert('Register successful');
-        console.log(user);
-
-        // Redirect to home page
-        this.router.navigate(['/login']);
-      },
-      (error) => {
-        alert('Register failed');
-        console.log(error);
-      }
-    );
+    // register
   }
-
-
 }
